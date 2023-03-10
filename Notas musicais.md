@@ -323,8 +323,6 @@ Inserimos o tema da página. Lembre-se que para a tag name é necessário dar **
 
 O arquivo configurado fica assim:
 
-
-
 Para alterar os ícones da página de documentação o ideal é que nós criemos uma pasta *assets* para armazenar arquivos estáticos.
 
 A confiuração ficará conforme figura abaixo:
