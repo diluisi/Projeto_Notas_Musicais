@@ -116,7 +116,6 @@ O primeiro passo é instalar o Poetry, pois assim poderemos:
 
 Assistir a live do Poetry ([Gerenciando pacotes e ambientes com Poetry - Live de Python #179 - YouTube](https://www.youtube.com/watch?v=ZOSWdktsKf0))
 
-
 ## Poetry
 
 Criando um projeto em Poetry:
@@ -165,7 +164,7 @@ No entanto, precisamos criar o git ignore que ajuda o GitHub a não subir alguns
 
 Instalamos o ignr via pip install ignr para criarmos automaticamente os arquivos que queremos ignorar.
 
-``` bash
+```bash
 ignr -p python > .gitignore
 ```
 
@@ -230,6 +229,108 @@ poetry add --group dev blue
 poetry add --group dev isort
 ```
 
+## Documentação
 
+Como queremos publicar a biblioteca e as pessoas terão acesso ao nosso projeto, a documentação é fundamental. Para isso temos duas opções: Sphinx ou MKDocs.
+
+Vamos utilizar o mkdocs.
+
+Fonte 1: https://mkdocstrings.github.io/
+
+Fonte 2: [Documentado projetos com MkDocs - Live de Python #189 - YouTube](https://www.youtube.com/watch?v=GW6nAJ1NHUQ)
+
+Fonte 3: [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
+
+Em vez de subirmos a ferramenta de documentação para o grupo de dev no poetry, nós vamos subi-la em um novo grupo chamado doc.
+
+```bash
+poetry add --group doc mkdocs-material
+```
+
+Comentários de funções e classes são muito importantes para deixar o código mais legível. Para isso instalaremos o mkdocstrings
+
+```bash
+poetry add --group doc mkdocstrings
+```
+
+O mkdocstrings pode executar docstrings de qualquer linguagem. Para que o Python seja o padrão devemos instalar um plugin para Python. 
+
+```bash
+poetry add --group doc mkdocstrings-python
+```
+
+Fonte 4: [Overview - mkdocstrings-python](https://mkdocstrings.github.io/python/)
+
+Com isso podemos fazer vários tipos de docstrings, cabe a nós escolhermos aquela que mais nos agrada. Recomenda-se a docstring do Google que é muito similar à **PEP 257** que formaliza como escrever docstrings no Python.
+
+## Automação de tarefas
+
+Muitas vezes temos que escrever longos e tediosos comandos no terminal inúmeras vezes durante o projeto. Para evitar o stress de ter que digitar a mesma coisa diversas vezes é praxe deixar esta tarefa automatizada. Algumas pessoas preferem o arquivo **make** para fazer isso. Neste projeto faremos a automação com **taskipy**.
+
+```bash
+poetry add --group dev taskipy
+```
+
+Com esta biblioteca super útil poderemos usar uma palavra apenas para simplificar os longos comandos.
+
+## Commit
+
+Pronto! Estamos com tudo pronto para nosso desenvolvimento e documentação do projeto. Se observar estamos comitando o arquivo poetry.lock, apesar da controvérsia que ronda em torno deste arquivo (commit ou não commit, eis a questão), nós comitaremos, pois nos permitirá no futuro reproduzir exatamente este ambiente que acabamos de criar. Facilita a vida do analista júnior que ainda está por vir quando debugar nosso código. 
+
+# Aula 3: Configuração das ferramentas
+
+A primeira coisa que devemos fazer é ativar nosso ambiente de desenvolvimento:
+
+```bash
+poetry shell
+```
+
+![](/home/diluisi/snap/marktext/9/.config/marktext/images/2023-03-09-13-41-49-image.png)Vamos ver que estamos no ambiente virtual.
+
+## Mkdocs
+
+A primeira ferramenta que iremos configurar é a Documentação Mkdocs.
+
+Para iniciar nossa documentação devemos inserir o seguinte comando no terminal:
+
+```bash
+mkdocs new .
+```
+
+O comando acima significa que a documentação será criada dentro do repositório.
+
+![](/home/diluisi/snap/marktext/9/.config/marktext/images/2023-03-09-13-45-31-image.png)
+
+O arquivo mkdocs.yml é de configuração e o index.md (md de markdown) está dentro da pasta docs.
+
+![](/home/diluisi/snap/marktext/9/.config/marktext/images/2023-03-09-13-47-19-image.png)
+
+```bash
+mkdocs serve
+```
+
+Este comando  nos fornecerá um link que poderemos abrir no browser. O conteúdo desta página está no index.md que nós iremos alterar.
+
+![](/home/diluisi/snap/marktext/9/.config/marktext/images/2023-03-09-13-49-37-image.png)
+
+Mas este não é o template que baixamos "Material". Para isso temos que alterar o arquivo de configuração mkdocs.yml
+
+![](/home/diluisi/snap/marktext/9/.config/marktext/images/2023-03-09-13-55-37-image.png)
+
+Inserimos o tema da página. Lembre-se que para a tag name é necessário dar **EXATAMENTE** dois espaços para que o tema seja carregado.
+
+![](/home/diluisi/snap/marktext/9/.config/marktext/images/2023-03-09-13-55-12-image.png)
+
+O arquivo configurado fica assim:
+
+
+
+Para alterar os ícones da página de documentação o ideal é que nós criemos uma pasta *assets* para armazenar arquivos estáticos.
+
+A confiuração ficará conforme figura abaixo:
+
+![](/home/diluisi/snap/marktext/9/.config/marktext/images/2023-03-09-20-33-48-image.png)
+
+Ok! Agora vamos modificar o conteúdo da página no arquivo index.md
 
 

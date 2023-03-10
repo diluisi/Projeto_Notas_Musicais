@@ -1,0 +1,16 @@
+site_name: Notas Musicais
+repo_url: https://github.com/diluisi/Projeto_Notas_Musicais
+repo_name: diluisi/Projeto_Notas_Musicais
+edit_uri: tree/master/notas-musicais/docs
+
+theme:
+  name: material
+  language: pt-BR
+  logo: assets/music_logo.png
+  favicon: assets/music_logo.png
+  
+markdown_extensions:
+  - attr_list
+
+extra_css:
+  - stylesheets/extra.css
